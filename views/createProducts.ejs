@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link rel="stylesheet" href="/stylesheets/style.css">
+
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <% if(success.length > 0){ %>
+    <div id="message" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded">
+        <%= success[0] %>
+    </div>
+<% } %>
+
+    <div class="h-screen flex">
+        <div class="left bg-violet-300 h-full w-1/5">
+            <h1 class="absolute left-5 top-5 text-3xl font-bold text-violet-700">ClickKart</h1>
+
+            <div class="absolute p-5 gap-5 flex flex-col top-40">
+                <a href="/shop">All Products</a>
+                <a href="">Create Products</a>
+            </div>
+        </div>
+        <div class="right h-full w-full flex flex-col justify-center p-10 ">
+            
+            <div class="flex flex-col gap-3">
+                <h1 class="text-2xl font-bold">Create New Product</h1>
+                <h2 class="text-xl font-bold">Product Details</h2>
+
+            </div>
+
+            <div class="mt-5">
+                <form action="/products/create" method="post" enctype="multipart/form-data">
+                    <div>
+                        <div class="mb-3">
+                            <h1 class="pb-3">Product Image</h1>
+                            <input type="file" name="image" accept="image/*" class="w-2/5 border border-gray-300 rounded-xl p-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-violet-700 file:text-white file:cursor-pointer hover:file:bg-violet-800" />
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 mb-5 ">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="name" placeholder="Product Name">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="price" placeholder="Product Price">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="discount" placeholder="Discount Price">
+                        </div>
+
+                        <h1 class="font-bold text-xl mb-5">Panel Details</h1>
+
+                         <div class="flex flex-wrap gap-3 mb-5">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="bgcolor" placeholder="Background Color">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="panelcolor" placeholder="Panel Color">
+                            <input class="px-5 py-2 w-2/5 rounded-xl outline-none border border-gray-400" type="text" name="textcolor" placeholder="Text Color">
+                        </div>
+
+                        <input type="submit" name="submit" value="Create New Project" class="bg-violet-700 text-white p-3 rounded-xl">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+        setTimeout(()=>{
+            const message = document.getElementById("message")
+            if(message){
+                message.remove()
+            }
+        },3000)
+        </script>
+
+    
+
+</body>
+</html>

@@ -5,11 +5,10 @@ const userSchema = mongoose.Schema({
     fullname:String,
     email:String,
     password:String,
-    cart:{
-        type:Array,
-        default:[]
-    },
-    isadmin:Boolean,
+    cart:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"product"
+    }],
     orders:{
         type:Array,
         default:[]
@@ -17,4 +16,4 @@ const userSchema = mongoose.Schema({
     contact:Number
 })
 
-module.exports = mongoose.model(user , "userSchema" )
+module.exports = mongoose.model("user" , userSchema )

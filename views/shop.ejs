@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link rel="stylesheet" href="/stylesheets/style.css">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen">
+
+    
+    <% if(done.length > 0){ %>
+    <div id="message" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded">
+        <%= done[0] %>
+    </div>
+<% } %>
+
+
+    <div class="h-25 w-full p-5 flex justify-between ">
+         <a href="/shop" class="text-3xl font-bold text-violet-700">ClickKart</a>
+         <div class="flex gap-20 text-xl">
+            <a href="">Shop</a>
+            <a href="/cart">Cart</a>
+            <a href="/contactus">Contact Us</a>
+            <a href="/users/logout" class="text-red-500">Logout</a>
+         </div>
+    </div>
+    <div class="h-full w-full flex p-5 justify-center">
+
+        <div class=" h-full w-3/5 flex flex-wrap justify-center gap-20">
+        <% products.forEach((product)=>{ %>
+            <div class="h-70 w-60">
+            <div class="h-3/4 w-full bg-[<%=product.bgcolor%>]">
+                <img class="h-full w-full object-cover object-[center_30%]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+            </div>
+            <div class="h-1/4 w-full flex flex-wrap gap-10 p-3 justify-between bg-[<%=product.panelcolor%>] text-[<%= product.textcolor %>] ">
+                <div class="h-full">
+                    <h1><%= product.name %></h1>
+                <h1>₹<%= product.price %></h1>
+                </div>
+                <a href="/addtocart/<%=product._id%>" class="h-full w-12 bg-white flex justify-center items-center text-black text-2xl rounded-full">+</a>
+                
+            </div>
+        </div>
+        <% }) %>
+
+    </div>
+
+    </div>
+
+
+    <script>
+        setTimeout(()=>{
+            const message = document.getElementById("message")
+            if(message){
+                message.remove()
+            }
+        },3000)
+        </script>
+    
+</body>
+</html>

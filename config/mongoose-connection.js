@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
+const config = require("config")
 mongoose
-.connect("mongodb://127.0.0.1:27017/clickkart")
+.connect(`${config.get("MONGODB_URI")}/clickkart`)
 .then(()=>{
     console.log("connected")
 })
